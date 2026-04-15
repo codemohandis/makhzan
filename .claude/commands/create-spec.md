@@ -27,12 +27,10 @@ git checkout -b <branch_name>
 ```
 
 ## Step 3 — Context Research
-Read the codebase to prevent redundancy and surface reusable code:
-1. **Roadmap:** Read `docs/roadmap/roadmap.md`. If this feature's step is already marked `[x]`, STOP and warn the user.
-2. **SRS:** Read `docs/roadmap/srs.md` — extract the matching Functional Requirement (FR-XX) and acceptance criteria.
-3. **Database:** Read `supabase/migrations/` (Glob `*.sql`) — note current table states relevant to this feature.
-4. **Existing Specs:** Glob `.claude/specs/feature-specs/*.md` — confirm no conflicting logic.
-5. **Existing Code:** Check `src/lib/`, `src/app/`, `src/types/` for reusable utilities, types, and patterns.
+Read `docs/agent-context.md` — it contains the FR reference table, DB schema snapshot, spec registry, and reusable patterns. This replaces reading `srs.md`, `roadmap.md`, migrations, and existing specs individually.
+
+- If this feature's step is already marked `[x]` in the registry, STOP and warn the user.
+- Only read additional source files (e.g. a specific file in `src/lib/`) if you need implementation detail specific to this feature that the context file does not cover.
 
 ## Step 4 — Generate Hybrid Spec
 Create `.claude/specs/feature-specs/<step_num>-<feat_slug>.md` with this exact structure:
@@ -63,6 +61,8 @@ Create `.claude/specs/feature-specs/<step_num>-<feat_slug>.md` with this exact s
   - `src/components/editor/TipTapEditor.tsx` — RTL-enabled rich text editor component
 
 ### RTL Checklist
+> Skip this section for DB migrations and server-only features (no UI files created).
+
 - [ ] All layout classes use logical properties (`ps-*`, `pe-*`, `ms-*`, `me-*`, `text-start`, `text-end`)
 - [ ] No `left-*`, `right-*`, `text-left`, `text-right` in new files
 - [ ] Component tested with `lang="ur"` and `lang="fa"` on `<html>`
@@ -78,15 +78,8 @@ Create `.claude/specs/feature-specs/<step_num>-<feat_slug>.md` with this exact s
   - **When:** `deleteArticle(id)` is called
   - **Then:** Server action returns `{ error: 'Forbidden', status: 403 }`; DB is untouched
 
-### Hard Constraints (The Guardrails)
-- Use Supabase client from `src/lib/supabase/server.ts` for all server-side DB calls
-- Never use the `SUPABASE_SERVICE_ROLE_KEY` in client components
-- Always validate `user.role === 'admin'` server-side before any DELETE or destructive action
-- TypeScript strict mode — no `any` types; define all shapes in `src/types/`
-- RTL-first CSS — see RTL Checklist above
-- YouTube: store ID only (`dQw4w9WgXcQ`), never a full URL or `<iframe>` HTML
-- Run `/fix-rtl` on every new component before marking the feature done
-- Run `/secure-action` on every file with delete logic before marking the feature done
+### Hard Constraints
+> Inherited from `CLAUDE.md — Coding Standards`. No exceptions.
 
 ## 3. Definition of Done
 List 5-8 binary, testable requirements:

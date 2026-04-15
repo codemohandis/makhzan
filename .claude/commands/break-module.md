@@ -12,9 +12,7 @@ From `$ARGUMENTS`, extract:
 - `module_name`: Title Case (e.g., "Articles")
 
 ## Step 2 — Research (Read Before Writing)
-1. Read `docs/roadmap/srs.md` to extract all functional requirements (FR-XX) that belong to this module
-2. Read `docs/roadmap/roadmap.md` — find the module's feature table to check what's already listed
-3. Read `.claude/specs/break-modules/` (Glob `*.md`) — check for any existing specs that overlap
+Read `docs/agent-context.md` — it contains the FR reference table, full spec registry (with statuses), and reusable patterns. Use it to identify which FR-XX items belong to this module and which features are already listed or specced. No other reads required before Step 3.
 
 ## Step 3 — Generate Feature Breakdown
 For each feature in the module, output a table row with:
@@ -43,6 +41,14 @@ For each feature, print a brief block:
 
 ## Step 5 — Update Roadmap
 Append any new features discovered (not already in `docs/roadmap/roadmap.md`) to the correct module table in that file. Mark newly added rows with `[NEW]`.
+
+## Step 5b — Regenerate Agent Context
+Update `docs/agent-context.md` to reflect the current state of the project:
+1. **Spec Registry** — sync all rows from `docs/roadmap/roadmap.md` (status + spec file path)
+2. **DB Schema Snapshot** — if new migrations exist in `supabase/migrations/`, update the table list to reflect actual applied schema
+3. **Reusable Patterns** — add any new utilities, hooks, or components discovered during this break-module run
+
+Do not rewrite sections that haven't changed. This file is the single read target for `/create-spec` Step 3.
 
 ## Step 6 — Report
 Print:
