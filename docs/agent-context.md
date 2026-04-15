@@ -40,7 +40,7 @@
 |---|---|---|---|---|
 | 01 | F-01-01 | Next.js 15 App Router Scaffold | `[~]` In Progress | `.claude/specs/feature-specs/01-nextjs-scaffold.md` |
 | 02 | F-01-02 | Tailwind RTL Configuration | `[~]` In Progress | `.claude/specs/feature-specs/02-tailwind-rtl.md` |
-| 03 | F-01-03 | Font System (Noto Nastaliq + Vazirmatn) | `[ ]` Not Started | — |
+| 03 | F-01-03 | Font System (Noto Nastaliq + Vazirmatn) | `[x]` Done | `.claude/specs/feature-specs/03-font-system.md` |
 | 04 | F-01-04 | Language Toggle Component | `[ ]` Not Started | — |
 | 05 | F-01-05 | Auth Middleware (Dashboard Protection) | `[ ]` Not Started | — |
 | 06 | F-02-01 | Supabase Auth Setup (Email/Password) | `[ ]` Not Started | — |
@@ -76,3 +76,4 @@
 | Font switching CSS | `src/app/globals.css` | `html[lang="fa"]` overrides `--font-body` to Vazirmatn |
 | Tailwind font utilities | `tailwind.config.ts` | `font-nastaliq`, `font-vazirmatn` classes available |
 | RTL plugin | `tailwind.config.ts` | `tailwindcss-rtl` installed; use `ps-*`, `pe-*`, `ms-*`, `me-*` |
+| `Locale` type | `src/types/index.ts` | `'ur' \| 'fa'`; `LOCALES` const; `DEFAULT_LOCALE = 'ur'` |
