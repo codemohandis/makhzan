@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev)",
+      "Bash(npm run build)",
+      "Bash(npx tsc --noEmit)",
+      "Bash(npm install *)",
+      "Bash(npx supabase migration new *)",
+      "Bash(npx supabase db diff *)"
+    ],
+    "deny": [
+      "Bash(git push*)",
+      "Bash(npx supabase db push*)",
+      "Bash(npm run deploy*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"[Claude] Editing: $CLAUDE_TOOL_INPUT_FILE_PATH\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx tsc --noEmit 2>&1 | tail -5 || true"
+          }
+        ]
+      }
+    ]
+  }
+}
