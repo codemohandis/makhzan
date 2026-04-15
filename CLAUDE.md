@@ -104,6 +104,8 @@ After implementing any feature:
 | Command | Purpose |
 |---|---|
 | `/init-module` | Scaffold a new content module (articles/books/videos) |
+| `/break-module` | Decompose a module into features with priorities |
+| `/create-spec` | Create a spec and git branch for a single feature |
 | `/secure-action` | Audit delete operations for missing admin role check |
 | `/fix-rtl` | Replace hardcoded left/right CSS with logical equivalents |
 | `/db-migrate` | Generate a Supabase migration SQL file |
@@ -112,4 +114,6 @@ After implementing any feature:
 
 ## Project Reference
 
-Full requirements, DB schema, RLS policies, and development phases are in `srs.md`.
+Agent context (FR table, DB schema snapshot, spec registry): `docs/agent-context.md`
+
+Full human-readable requirements: `docs/roadmap/srs.md`
