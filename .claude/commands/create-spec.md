@@ -1,7 +1,7 @@
 ---
 description: Create a hybrid context/blueprint spec and git branch for a new Makhzan feature
 argument-hint: "Step number and feature name e.g. 10 tiptap-rtl-editor"
-allowed-tools: Read, Write, Glob, Bash(git:*)
+allowed-tools: Read, Write, Glob, Grep, Bash(git:*)
 ---
 
 You are a Senior Systems Architect for the Makhzan project (Next.js 15 + Supabase + Tailwind RTL). Your goal is to initialize a feature development environment by creating a "Contract of Truth" (the Spec) and a clean git workspace.
@@ -78,10 +78,35 @@ Create `.claude/specs/feature-specs/<step_num>-<feat_slug>.md` with this exact s
   - **When:** `deleteArticle(id)` is called
   - **Then:** Server action returns `{ error: 'Forbidden', status: 403 }`; DB is untouched
 
+### Edge Cases
+> **Required** for: server actions, middleware, auth flows, any mutation (DB/cookies/storage).
+> **Skip** for: UI-only components, layout, and styling-only features — write "No edge cases — UI only."
+
+- **Edge:** [Corrupted or invalid input]
+  - **Given:** [boundary condition — e.g. tampered cookie value, missing required field, unknown enum]
+  - **When:** [action is attempted]
+  - **Then:** [safe outcome — no crash, no data leak; graceful fallback or silent no-op]
+
+- **Edge:** [Concurrent or repeated action]
+  - **Given:** [race condition or duplicate call — e.g. rapid double-click, parallel requests]
+  - **When:** [action fires more than once or overlaps]
+  - **Then:** [idempotent outcome — state is correct, no duplicates, no partial writes]
+
 ### Hard Constraints
 > Inherited from `CLAUDE.md — Coding Standards`. No exceptions.
 
-## 3. Definition of Done
+## 3. Automated Checks
+> Run `/verify-spec <step_num>-<feat_slug>` immediately after implementation.
+
+| # | Check | Tool | Pass Condition |
+| :- | :--- | :--- | :--- |
+| 1 | TypeScript compilation | `npx tsc --noEmit` | Exit 0, zero type errors |
+| 2 | RTL class audit | `/fix-rtl` on each new component file | 0 directional replacements needed |
+| 3 | Role guard audit | `/secure-action` on each server action file | Admin role check confirmed present |
+
+> Omit rows 2–3 for server-only or DB-only features with no UI or mutation logic.
+
+## 4. Definition of Done
 List 5-8 binary, testable requirements:
 - [ ] `npx tsc --noEmit` exits with 0 errors
 - [ ] Manager JWT calling the delete action receives HTTP 403
@@ -107,4 +132,5 @@ Spec:      .claude/specs/feature-specs/<step_num>-<feat_slug>.md
 SRS Ref:   FR-XX — <requirement title>
 Status:    Sync'd with main. Roadmap updated to [~] In Progress.
 Next:      Implement using the blueprint in the spec above.
+           Then run: /verify-spec <step_num>-<feat_slug>
 ```
