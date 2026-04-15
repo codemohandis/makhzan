@@ -37,7 +37,7 @@
 | Step | Feature ID | Feature Name | Priority | Spec |
 |---|---|---|---|---|
 | [~] 01 | F-01-01 | Next.js 15 App Router Scaffold | P0 | `.claude/specs/feature-specs/01-nextjs-scaffold.md` |
-| 02 | F-01-02 | Tailwind RTL Configuration | P0 | `.claude/specs/02-tailwind-rtl.md` |
+| [~] 02 | F-01-02 | Tailwind RTL Configuration | P0 | `.claude/specs/feature-specs/02-tailwind-rtl.md` |
 | 03 | F-01-03 | Font System (Noto Nastaliq + Vazirmatn) | P0 | `.claude/specs/03-font-system.md` |
 | 04 | F-01-04 | Language Toggle Component | P0 | `.claude/specs/04-language-toggle.md` |
 | 05 | F-01-05 | Auth Middleware (Dashboard Protection) | P0 | `.claude/specs/05-auth-middleware.md` |
@@ -110,10 +110,10 @@ M-06 Database (runs in parallel with M-01 setup)
 
 | Module | Total Features | Done | In Progress | Remaining |
 |---|---|---|---|---|
-| M-01 Foundation | 5 | 0 | 1 | 4 |
+| M-01 Foundation | 5 | 0 | 2 | 3 |
 | M-02 Auth | 4 | 0 | 0 | 4 |
 | M-03 Articles | 5 | 0 | 0 | 5 |
 | M-04 Library | 5 | 0 | 0 | 5 |
 | M-05 Media | 4 | 0 | 0 | 4 |
 | M-06 Database | 4 | 0 | 0 | 4 |
-| **Total** | **27** | **0** | **1** | **26** |
+| **Total** | **27** | **0** | **2** | **25** |

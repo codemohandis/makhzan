@@ -1,7 +1,7 @@
 export default function HomePage() {
   return (
     <main>
-      <p>Makhzan — Coming Soon</p>
+      <p>مخزن بہت جلد آرہا ہے</p>
     </main>
   );
 }
