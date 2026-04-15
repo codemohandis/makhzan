@@ -1,16 +1,20 @@
 # GitHub Workflow Guide
 
-## 1. One-Time Setup
+> A branch is NOT a separate repo. It is a separate line of work inside the same repo.
+> You can see all branches at: https://github.com/codemohandis/makhzan (branch dropdown)
+
+---
+
+## 1. One-Time Setup (already done)
 
 ```bash
-# Initialize local repo
 git init
-
-# Create and switch to main branch
 git checkout -b main
-
-# Link to GitHub remote
 git remote add origin https://github.com/codemohandis/makhzan
+
+# If GitHub created a README on remote main, sync it first:
+git pull origin main --allow-unrelated-histories
+git push origin main
 ```
 
 ---
@@ -18,9 +22,8 @@ git remote add origin https://github.com/codemohandis/makhzan
 ## 2. Before Starting Any Feature
 
 ```bash
-# Make sure you're on main and it's clean
 git checkout main
-git pull origin main
+git pull origin main        # always sync main before branching
 ```
 
 ---
@@ -28,8 +31,8 @@ git pull origin main
 ## 3. Start a Feature Branch
 
 ```bash
-# Create and switch to a new branch
-git checkout -b feature/nextjs-scaffold
+# Replace <name> with the feature slug, e.g. tailwind-rtl
+git checkout -b feature/<name>
 ```
 
 ---
@@ -37,14 +40,9 @@ git checkout -b feature/nextjs-scaffold
 ## 4. During Development (save your work)
 
 ```bash
-# See what changed
-git status
-
-# Stage all changed files
-git add .
-
-# Commit with a message
-git commit -m "feat: scaffold Next.js 15 App Router"
+git status                              # see what changed
+git add .                               # stage all changes
+git commit -m "feat: describe change"   # commit
 ```
 
 ---
@@ -52,29 +50,31 @@ git commit -m "feat: scaffold Next.js 15 App Router"
 ## 5. Push Branch to GitHub
 
 ```bash
-# First push (sets upstream)
-git push -u origin feature/nextjs-scaffold
+# First push — sets upstream tracking
+git push -u origin feature/<name>
 
-# Subsequent pushes
+# All later pushes (just this)
 git push
 ```
 
 ---
 
-## 6. After Feature is Merged — Clean Up
+## 6. Merge via Pull Request on GitHub (recommended)
+
+1. Go to https://github.com/codemohandis/makhzan
+2. GitHub will show a banner: **"Compare & pull request"** — click it
+3. Set base: `main` ← compare: `feature/<name>`
+4. Click **"Merge pull request"**
+
+---
+
+## 7. After PR is Merged — Clean Up Locally
 
 ```bash
-# Switch back to main
 git checkout main
-
-# Pull the merged changes
-git pull origin main
-
-# Delete the local branch
-git branch -d feature/nextjs-scaffold
-
-# Delete the remote branch
-git push origin --delete feature/nextjs-scaffold
+git pull origin main                          # pull the merged changes down
+git branch -d feature/<name>                  # delete local branch (safe)
+git push origin --delete feature/<name>       # delete remote branch
 ```
 
 ---
@@ -85,11 +85,14 @@ git push origin --delete feature/nextjs-scaffold
 |---|---|
 | New feature branch | `git checkout -b feature/<name>` |
 | Save progress | `git add . && git commit -m "message"` |
-| Push to GitHub | `git push -u origin feature/<name>` |
+| First push to GitHub | `git push -u origin feature/<name>` |
+| Subsequent pushes | `git push` |
 | Switch branch | `git checkout <branch-name>` |
 | List all branches | `git branch -a` |
+| Pull remote changes | `git pull origin main` |
 | Delete local branch | `git branch -d feature/<name>` |
 | Delete remote branch | `git push origin --delete feature/<name>` |
-| Force delete local (unmerged) | `git branch -D feature/<name>` |
+| Force delete (unmerged) | `git branch -D feature/<name>` |
 
-> Use `-d` (safe) when the branch is already merged. Use `-D` (force) only if you want to discard an unmerged branch.
+> Use `-d` (safe) when branch is already merged into main.
+> Use `-D` (force) only to discard an unmerged branch intentionally.

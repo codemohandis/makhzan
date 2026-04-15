@@ -31,10 +31,10 @@ generated: 2026-04-15
 ---
 
 ### F-01-02 — Configure Tailwind RTL
-- **What:** Tailwind CSS is installed with `tailwindcss-rtl` plugin, making logical utilities (`ps-*`, `pe-*`, `ms-*`, `me-*`, `text-start`, `text-end`) available project-wide.
-- **Why:** NFR-01 mandates logical CSS everywhere; the plugin enforces the rule. Maps to SRS §4 NFR-01, CLAUDE.md RTL-First.
-- **Files touched:** `tailwind.config.ts`, `postcss.config.js`, `src/app/globals.css`
-- **Acceptance signal:** `grep -r "text-left" src/` returns 0 results; a test div with `class="ps-4"` renders correct padding in both directions.
+- **What:** Install Tailwind CSS with `tailwindcss-rtl` plugin and initialize Shadcn/UI (New York style, Stone base, CSS variables). Configure a "Digital Manuscript" theme — soft paper (`#F9F7F2`) background, Oxford Blue / Burgundy / Forest Green accents — via Shadcn CSS variable overrides at `:root`. Load `Noto Nastaliq Urdu` and `Vazirmatn` via `next/font/google` and switch between them using a `--font-body` CSS variable keyed on `html[lang]`. Create a `GlobalContainer` layout primitive that enforces `dir="rtl"`, applies the paper background, and uses only logical padding classes (`ps-*`, `pe-*`).
+- **Why:** NFR-01 mandates logical CSS everywhere; the RTL plugin enforces the rule at the utility layer. Shadcn/UI is chosen over MUI/Bootstrap because we own the component source — the only way to apply `line-height: 2.0` (required for Nastaliq legibility) without fighting third-party specificity. Maps to SRS §4 NFR-01, NFR-02, CLAUDE.md RTL-First and Typography rules.
+- **Files touched:** `postcss.config.mjs`, `tailwind.config.ts`, `components.json`, `src/app/globals.css`, `src/app/layout.tsx`, `src/components/GlobalContainer.tsx`, `src/lib/utils.ts`
+- **Acceptance signal:** `npm run dev` shows soft paper background at `localhost:3000`; DevTools shows Noto Nastaliq Urdu when `lang="ur"` and Vazirmatn when `lang="fa"`; `grep -r "text-left\|ml-\|mr-\|pl-\|pr-" src/` returns 0 results; `npx tsc --noEmit` exits 0.
 - **Spec command:** `/create-spec 02 tailwind-rtl`
 
 ---
