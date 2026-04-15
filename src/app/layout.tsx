@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Nastaliq_Urdu, Vazirmatn } from "next/font/google";
+import { getLocale } from "@/lib/actions/locale";
 import "./globals.css";
 
 const nastaliq = Noto_Nastaliq_Urdu({
@@ -22,14 +23,16 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.ico" },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const locale = await getLocale();
+
   return (
     <html
-      lang="ur"
+      lang={locale}
       dir="rtl"
       className={`${nastaliq.variable} ${vazirmatn.variable}`}
       suppressHydrationWarning
