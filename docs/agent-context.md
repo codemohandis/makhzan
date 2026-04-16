@@ -19,14 +19,22 @@
 
 ## Database Schema Snapshot
 
-> Source: `srs.md §5`. No migrations applied yet — schema lives in SRS only.
+> Source: `srs.md §5` + `supabase/migrations/`. Applied migrations listed below.
+
+**Applied migrations:**
+
+| File | Tables Created | Status |
+|---|---|---|
+| `20260416000000_create_profiles.sql` | `user_role` enum, `profiles`, profiles RLS policies, `handle_new_user` trigger | ✅ Applied |
+
+**Pending (not yet migrated):** `articles`, `books`, `videos`, their RLS policies, storage bucket.
 
 | Table | Key Columns | Notes |
 |---|---|---|
-| `profiles` | `id UUID (PK, FK auth.users)`, `full_name TEXT`, `role user_role (admin\|manager)`, `created_at` | Extends `auth.users`; auto-created by trigger |
-| `articles` | `id UUID PK`, `title TEXT`, `content JSONB`, `language (ur\|fa)`, `status (draft\|published)`, `author_id FK profiles` | Rich text stored as JSONB (TipTap) |
-| `books` | `id UUID PK`, `title TEXT`, `pdf_url TEXT`, `thumbnail_url TEXT`, `language (ur\|fa)`, `can_download BOOL`, `author_id FK profiles` | PDF URL from Storage bucket `books` |
-| `videos` | `id UUID PK`, `title TEXT`, `youtube_id TEXT`, `language (ur\|fa)`, `description TEXT`, `author_id FK profiles` | ID only — never full URL |
+| `profiles` | `id UUID (PK, FK auth.users)`, `full_name TEXT`, `role user_role (admin\|manager)`, `created_at` | **Applied.** Auto-created by `on_auth_user_created` trigger; uses `ON CONFLICT DO NOTHING` |
+| `articles` | `id UUID PK`, `title TEXT`, `content JSONB`, `language (ur\|fa)`, `status (draft\|published)`, `author_id FK profiles`, `created_at`, `updated_at` | Pending migration. Rich text stored as JSONB (TipTap). Needs `updated_at` trigger (F-06-05) |
+| `books` | `id UUID PK`, `title TEXT`, `pdf_url TEXT`, `thumbnail_url TEXT`, `language (ur\|fa)`, `can_download BOOL DEFAULT TRUE`, `author_id FK profiles` | Pending migration. PDF URL from Storage bucket `books` |
+| `videos` | `id UUID PK`, `title TEXT`, `youtube_id TEXT NOT NULL`, `language (ur\|fa)`, `description TEXT`, `author_id FK profiles` | Pending migration. ID only — never full URL |
 
 **RLS:** Enabled on all four tables. Delete policy pattern: `(SELECT role FROM profiles WHERE id = auth.uid()) = 'admin'`
 
@@ -61,10 +69,11 @@
 | 21 | F-05-02 | lite-youtube-embed RTL Gallery | `[ ]` Not Started | — |
 | 22 | F-05-03 | Video Server Actions (CRUD + RBAC) | `[ ]` Not Started | — |
 | 23 | F-05-04 | Public Video Gallery Page | `[ ]` Not Started | — |
-| 24 | F-06-01 | Initial Migration (profiles + articles) | `[ ]` Not Started | — |
-| 25 | F-06-02 | Books + Videos Migration | `[ ]` Not Started | — |
-| 26 | F-06-03 | RLS Policies for All Tables | `[ ]` Not Started | — |
-| 27 | F-06-04 | Storage Bucket Policies | `[ ]` Not Started | — |
+| 24 | F-06-01 | Migrate Articles Table | `[~]` In Progress (profiles applied; articles pending) | — |
+| 25 | F-06-02 | Migrate Books + Videos Tables | `[ ]` Not Started | — |
+| 26 | F-06-03 | Apply RLS Policies (Articles, Books, Videos) | `[ ]` Not Started | — |
+| 27 | F-06-04 | Create Storage Bucket + Policies | `[ ]` Not Started | — |
+| 28 | F-06-05 | Articles Updated-At Trigger | `[ ]` Not Started | — |
 
 ---
 
