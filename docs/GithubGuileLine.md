@@ -32,6 +32,7 @@ as
 
 ```bash
 # Replace <name> with the feature slug, e.g. tailwind-rtl
+
 git checkout -b feature/<name>
 ```
 

@@ -12,3 +12,7 @@ export interface Profile {
   role: UserRole;
   created_at: string;
 }
+
+export interface ProfileWithEmail extends Profile {
+  email: string;
+}
