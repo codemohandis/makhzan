@@ -16,3 +16,19 @@ export interface Profile {
 export interface ProfileWithEmail extends Profile {
   email: string;
 }
+
+// ── Articles ──────────────────────────────────────────────────────────────────
+
+export type ArticleStatus   = 'draft' | 'published';
+export type ArticleLanguage = 'ur' | 'fa'; // mirrors Locale; keeps Article self-contained
+
+export interface Article {
+  id:         string;
+  title:      string;
+  content:    Record<string, unknown> | null; // TipTap JSONB
+  language:   ArticleLanguage;
+  status:     ArticleStatus;
+  author_id:  string | null;
+  created_at: string;
+  updated_at: string;
+}

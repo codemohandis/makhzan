@@ -69,7 +69,7 @@
 | 21 | F-05-02 | lite-youtube-embed RTL Gallery | `[ ]` Not Started | — |
 | 22 | F-05-03 | Video Server Actions (CRUD + RBAC) | `[ ]` Not Started | — |
 | 23 | F-05-04 | Public Video Gallery Page | `[ ]` Not Started | — |
-| 24 | F-06-01 | Migrate Articles Table | `[~]` In Progress (profiles applied; articles pending) | — |
+| 24 | F-06-01 | Migrate Articles Table | `[~]` In Progress (profiles applied; articles pending) | `.claude/specs/feature-specs/24-migrate-articles-table.md` |
 | 25 | F-06-02 | Migrate Books + Videos Tables | `[ ]` Not Started | — |
 | 26 | F-06-03 | Apply RLS Policies (Articles, Books, Videos) | `[ ]` Not Started | — |
 | 27 | F-06-04 | Create Storage Bucket + Policies | `[ ]` Not Started | — |

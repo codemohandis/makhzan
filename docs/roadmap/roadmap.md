@@ -84,7 +84,7 @@
 
 | Step | Feature ID | Feature Name | Priority | Spec |
 |---|---|---|---|---|
-| [~] 24 | F-06-01 | Migrate Articles Table | P0 | — |
+| [~] 24 | F-06-01 | Migrate Articles Table | P0 | `.claude/specs/feature-specs/24-migrate-articles-table.md` |
 | [ ] 25 | F-06-02 | Migrate Books + Videos Tables | P0 | — |
 | [ ] 26 | F-06-03 | Apply RLS Policies (Articles, Books, Videos) | P0 | — |
 | [ ] 27 | F-06-04 | Create Storage Bucket + Policies | P0 | — |
