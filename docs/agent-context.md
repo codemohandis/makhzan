@@ -46,7 +46,7 @@
 | 06 | F-02-01 | Supabase Auth Setup (Email/Password) | `[ ]` Not Started | — |
 | 07 | F-02-02 | Profiles Table + Auto-Create Trigger | `[x]` Done | `.claude/specs/feature-specs/07-profile-table.md` |
 | 08 | F-02-03 | Login & Logout Pages | `[ ]` Not Started | — |
-| 09 | F-02-04 | Admin Role Elevation | `[ ]` Not Started | — |
+| 09 | F-02-04 | Admin Role Elevation | `[~]` In Progress | `.claude/specs/feature-specs/09-role-elevation.md` |
 | 10 | F-03-01 | TipTap RTL Editor Component | `[ ]` Not Started | — |
 | 11 | F-03-02 | Article Server Actions (CRUD + RBAC) | `[ ]` Not Started | — |
 | 12 | F-03-03 | Dashboard Article List & Edit Pages | `[ ]` Not Started | — |
