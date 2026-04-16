@@ -47,7 +47,7 @@
 | Step | Feature ID | Feature Name | Priority | Spec |
 |---|---|---|---|---|
 | [~] 06 | F-02-01 | Supabase Auth Setup (Email/Password) | P0 | `.claude/specs/feature-specs/06-supabase-auth.md` |
-| 07 | F-02-02 | Profiles Table + Auto-Create Trigger | P0 | `.claude/specs/07-profiles-trigger.md` |
+| [~] 07 | F-02-02 | Profiles Table + Auto-Create Trigger | P0 | `.claude/specs/feature-specs/07-profile-table.md` |
 | 08 | F-02-03 | Login & Logout Pages | P0 | `.claude/specs/08-login-logout.md` |
 | 09 | F-02-04 | Admin Role Elevation (Manager → Admin) | P1 | `.claude/specs/09-role-elevation.md` |
 
@@ -111,7 +111,7 @@ M-06 Database (runs in parallel with M-01 setup)
 | Module | Total Features | Done | In Progress | Remaining |
 |---|---|---|---|---|
 | M-01 Foundation | 5 | 1 | 4 | 0 |
-| M-02 Auth | 4 | 0 | 1 | 3 |
+| M-02 Auth | 4 | 0 | 2 | 2 |
 | M-03 Articles | 5 | 0 | 0 | 5 |
 | M-04 Library | 5 | 0 | 0 | 5 |
 | M-05 Media | 4 | 0 | 0 | 4 |
