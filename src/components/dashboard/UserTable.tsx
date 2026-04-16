@@ -15,8 +15,8 @@ const ROLE_LABELS: Record<UserRole, string> = {
 };
 
 const ROLE_BADGE: Record<UserRole, string> = {
-  admin: 'bg-purple-100 text-purple-800',
-  manager: 'bg-blue-100 text-blue-800',
+  admin: 'bg-primary/10 text-primary',
+  manager: 'bg-accent/10 text-accent',
 };
 
 export default function UserTable({ users, currentUserId }: UserTableProps) {
@@ -73,45 +73,45 @@ export default function UserTable({ users, currentUserId }: UserTableProps) {
   return (
     <div className="overflow-x-auto">
       {error && (
-        <p className="mb-4 rounded border border-red-300 bg-red-50 px-4 py-2 text-sm text-red-700">
+        <p className="mb-4 rounded-lg border border-destructive/20 bg-destructive/10 px-4 py-2 text-sm text-destructive">
           {error}
         </p>
       )}
-      <table className="min-w-full divide-y divide-gray-200 text-sm">
-        <thead className="bg-gray-50">
+      <table className="min-w-full divide-y divide-border text-sm">
+        <thead className="bg-muted">
           <tr>
-            <th className="px-4 py-3 text-start font-medium uppercase tracking-wider text-gray-500">
+            <th className="px-4 py-3 text-start text-xs font-medium uppercase tracking-wider text-muted-foreground">
               Name
             </th>
-            <th className="px-4 py-3 text-start font-medium uppercase tracking-wider text-gray-500">
+            <th className="px-4 py-3 text-start text-xs font-medium uppercase tracking-wider text-muted-foreground">
               Email
             </th>
-            <th className="px-4 py-3 text-start font-medium uppercase tracking-wider text-gray-500">
+            <th className="px-4 py-3 text-start text-xs font-medium uppercase tracking-wider text-muted-foreground">
               Role
             </th>
-            <th className="px-4 py-3 text-start font-medium uppercase tracking-wider text-gray-500">
+            <th className="px-4 py-3 text-start text-xs font-medium uppercase tracking-wider text-muted-foreground">
               Joined
             </th>
-            <th className="px-4 py-3 text-start font-medium uppercase tracking-wider text-gray-500">
+            <th className="px-4 py-3 text-start text-xs font-medium uppercase tracking-wider text-muted-foreground">
               Change Role
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-200 bg-white">
+        <tbody className="divide-y divide-border bg-card">
           {users.map((user) => {
             const isSelf = user.id === currentUserId;
             const isLoading = isPending && pendingId === user.id;
             const currentRole = roles[user.id] ?? user.role;
 
             return (
-              <tr key={user.id} className={isSelf ? 'bg-yellow-50' : undefined}>
-                <td className="px-4 py-3 font-medium text-gray-900">
+              <tr key={user.id} className={isSelf ? 'bg-primary/5' : undefined}>
+                <td className="px-4 py-3 font-medium text-foreground">
                   {user.full_name ?? '—'}
                   {isSelf && (
-                    <span className="ms-2 text-xs text-gray-400">(you)</span>
+                    <span className="ms-2 text-xs text-muted-foreground">(you)</span>
                   )}
                 </td>
-                <td className="px-4 py-3 text-gray-600">{user.email}</td>
+                <td className="px-4 py-3 text-muted-foreground">{user.email}</td>
                 <td className="px-4 py-3">
                   <span
                     className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${ROLE_BADGE[currentRole]}`}
@@ -119,7 +119,7 @@ export default function UserTable({ users, currentUserId }: UserTableProps) {
                     {ROLE_LABELS[currentRole]}
                   </span>
                 </td>
-                <td className="px-4 py-3 text-gray-500">
+                <td className="px-4 py-3 tabular-nums text-muted-foreground">
                   {new Date(user.created_at).toLocaleDateString()}
                 </td>
                 <td className="px-4 py-3">
@@ -129,7 +129,7 @@ export default function UserTable({ users, currentUserId }: UserTableProps) {
                     onChange={(e) =>
                       handleRoleChange(user.id, e.target.value as UserRole)
                     }
-                    className="rounded border border-gray-300 bg-white px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 disabled:opacity-50"
+                    className="rounded-md border border-border bg-background px-2 py-1 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-50"
                     aria-label={`Change role for ${user.full_name ?? user.email}`}
                   >
                     <option value="manager">Manager</option>

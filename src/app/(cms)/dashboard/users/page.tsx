@@ -28,7 +28,7 @@ export default async function UsersPage() {
   if ('error' in result) {
     return (
       <main className="px-6 py-8">
-        <p className="text-red-600">Failed to load users: {result.error}</p>
+        <p className="text-sm text-destructive">Failed to load users: {result.error}</p>
       </main>
     );
   }
@@ -37,15 +37,17 @@ export default async function UsersPage() {
     <main className="px-6 py-8">
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-semibold text-gray-900">Users</h1>
-          <p className="mt-1 text-sm text-gray-500">
+          <h1 className="text-xl font-semibold text-foreground">Users</h1>
+          <p className="mt-1 text-sm text-muted-foreground">
             Manage roles for all registered accounts.
           </p>
         </div>
-        <span className="text-sm text-gray-400">{result.data.length} users</span>
+        <span className="tabular-nums text-sm text-muted-foreground">
+          {result.data.length} users
+        </span>
       </div>
 
-      <div className="rounded-lg border border-gray-200 bg-white shadow-sm">
+      <div className="overflow-hidden rounded-lg border border-border bg-card shadow-sm">
         <UserTable users={result.data} currentUserId={user.id} />
       </div>
     </main>

@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 interface GlobalContainerProps {
   children: React.ReactNode;
@@ -9,9 +9,8 @@ export function GlobalContainer({ children, className }: GlobalContainerProps) {
   return (
     <div
       className={cn(
-        "min-h-screen bg-paper text-ink",
-        "mx-auto max-w-6xl",
-        "ps-4 pe-4 sm:ps-6 sm:pe-6 lg:ps-8 lg:pe-8",
+        'mx-auto w-full max-w-6xl',
+        'px-4 sm:px-6 lg:px-8',
         className
       )}
     >

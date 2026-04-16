@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { setLocale } from '@/lib/actions/locale';
+import { cn } from '@/lib/utils';
 import type { Locale } from '@/types';
 
 interface LanguageToggleProps {
@@ -18,29 +19,26 @@ export function LanguageToggle({ currentLocale }: LanguageToggleProps) {
   }
 
   return (
-    <div className="flex gap-1" role="group" aria-label="انتخاب زبان">
-      <button
-        onClick={() => handleSwitch('ur')}
-        aria-pressed={currentLocale === 'ur'}
-        className={
-          currentLocale === 'ur'
-            ? 'rounded px-3 py-1 text-sm font-medium bg-primary text-primary-foreground'
-            : 'rounded px-3 py-1 text-sm font-medium text-foreground/60 hover:text-foreground transition-colors'
-        }
-      >
-        اردو
-      </button>
-      <button
-        onClick={() => handleSwitch('fa')}
-        aria-pressed={currentLocale === 'fa'}
-        className={
-          currentLocale === 'fa'
-            ? 'rounded px-3 py-1 text-sm font-medium bg-primary text-primary-foreground'
-            : 'rounded px-3 py-1 text-sm font-medium text-foreground/60 hover:text-foreground transition-colors'
-        }
-      >
-        فارسی
-      </button>
+    <div
+      className="inline-flex rounded-md border border-border bg-background p-0.5 gap-0.5"
+      role="group"
+      aria-label="انتخاب زبان"
+    >
+      {(['ur', 'fa'] as Locale[]).map((locale) => (
+        <button
+          key={locale}
+          onClick={() => handleSwitch(locale)}
+          aria-pressed={currentLocale === locale}
+          className={cn(
+            'rounded px-3 py-1 text-sm font-medium transition-colors',
+            currentLocale === locale
+              ? 'bg-primary text-primary-foreground shadow-sm'
+              : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+          )}
+        >
+          {locale === 'ur' ? 'اردو' : 'فارسی'}
+        </button>
+      ))}
     </div>
   );
 }

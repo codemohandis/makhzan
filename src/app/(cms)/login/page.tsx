@@ -17,26 +17,31 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
   const { error } = await searchParams;
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="w-full max-w-sm bg-white rounded-2xl shadow-md p-8">
-        <h1 className="text-2xl font-bold text-center mb-8 text-gray-900">
-          Sign in to Makhzan
-        </h1>
+    <main className="flex min-h-screen items-center justify-center bg-background">
+      <div className="w-full max-w-sm rounded-xl border border-border bg-card p-8 shadow-sm">
+        {/* Brand mark */}
+        <div className="mb-8 text-center">
+          <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+            Makhzan CMS
+          </p>
+          <h1 className="mt-1 text-2xl font-semibold text-foreground">
+            Sign in
+          </h1>
+        </div>
 
         {error && (
-          <p className="mb-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
-            {error === 'invalid_credentials'
-              ? 'Invalid email or password.'
-              : 'Sign in failed. Please try again.'}
-          </p>
+          <div className="mb-5 flex items-start gap-2 rounded-lg border border-destructive/20 bg-destructive/10 px-4 py-3">
+            <p className="text-sm text-destructive">
+              {error === 'invalid_credentials'
+                ? 'Invalid email or password.'
+                : 'Sign in failed. Please try again.'}
+            </p>
+          </div>
         )}
 
         <form action={signIn} className="flex flex-col gap-5">
           <div className="flex flex-col gap-1.5">
-            <label
-              htmlFor="email"
-              className="text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="email" className="text-sm font-medium text-foreground">
               Email
             </label>
             <input
@@ -45,16 +50,13 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
               type="email"
               required
               autoComplete="email"
-              className="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+              className="w-full rounded-md border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20"
               placeholder="you@example.com"
             />
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <label
-              htmlFor="password"
-              className="text-sm font-medium text-gray-700"
-            >
+            <label htmlFor="password" className="text-sm font-medium text-foreground">
               Password
             </label>
             <input
@@ -63,7 +65,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
               type="password"
               required
               autoComplete="current-password"
-              className="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+              className="w-full rounded-md border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20"
               placeholder="••••••••"
             />
           </div>
@@ -80,7 +82,7 @@ function LoginSubmitButton() {
   return (
     <button
       type="submit"
-      className="w-full rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-colors"
+      className="w-full rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring/40"
     >
       Sign in
     </button>

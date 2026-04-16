@@ -1,6 +1,7 @@
 import { getBookById } from '@/lib/actions/books';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { ChevronRight, Download } from 'lucide-react';
 
 interface BookPageProps {
   params: Promise<{ id: string }>;
@@ -20,22 +21,23 @@ export default async function BookPage({ params }: BookPageProps) {
     <main className="mx-auto max-w-3xl px-4 py-8">
       <Link
         href="/books"
-        className="mb-6 inline-block text-start text-sm text-blue-600 hover:underline"
+        className="mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
       >
-        ← تمام کتابیں
+        <ChevronRight className="h-4 w-4" />
+        تمام کتابیں
       </Link>
 
       <article>
-        <h1 className="mb-2 text-start text-3xl font-bold leading-snug">
+        <h1 className="mb-2 text-start text-3xl font-bold leading-snug text-foreground">
           {book.title}
         </h1>
 
-        <p className="mb-8 text-start text-xs text-gray-400">
+        <p className="mb-8 text-start text-xs tabular-nums text-muted-foreground">
           {new Date(book.created_at).toLocaleDateString('ur-PK')}
         </p>
 
         {/* PDF viewer will be rendered by react-pdf-viewer (F-04-03) */}
-        <div className="rounded-lg border border-gray-200 p-6 text-center text-sm text-gray-400">
+        <div className="rounded-lg border border-border bg-muted p-6 text-center text-sm text-muted-foreground">
           PDF ریڈر جلد آ رہا ہے۔
         </div>
 
@@ -43,8 +45,9 @@ export default async function BookPage({ params }: BookPageProps) {
           <a
             href={book.pdf_url}
             download
-            className="mt-4 inline-block rounded-md bg-blue-600 px-4 py-2 text-start text-sm font-medium text-white hover:bg-blue-700"
+            className="mt-4 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
+            <Download className="h-4 w-4" />
             ڈاؤن لوڈ کریں
           </a>
         )}

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import LogoutButton from '@/components/auth/LogoutButton';
+import { Shield } from 'lucide-react';
 
 export default async function DashboardPage() {
   const supabase = await createSupabaseServerClient();
@@ -20,27 +20,33 @@ export default async function DashboardPage() {
   const isAdmin = profile?.role === 'admin';
 
   return (
-    <main>
-      <header className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
-        <h1 className="text-lg font-semibold text-gray-900">Makhzan</h1>
-        <LogoutButton />
-      </header>
-      <section className="px-6 py-8">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {isAdmin && (
-            <Link
-              href="/dashboard/users"
-              className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm transition hover:border-purple-300 hover:shadow-md"
-            >
-              <p className="text-sm font-medium text-purple-700">Admin</p>
-              <p className="mt-1 text-lg font-semibold text-gray-900">User Management</p>
-              <p className="mt-1 text-sm text-gray-500">
-                View all accounts and change roles.
-              </p>
-            </Link>
-          )}
-        </div>
-      </section>
+    <main className="px-6 py-8">
+      <div className="mb-6">
+        <h1 className="text-2xl font-semibold text-foreground">Dashboard</h1>
+        <p className="mt-1 text-sm text-muted-foreground">
+          Welcome back{user.email ? `, ${user.email}` : ''}.
+        </p>
+      </div>
+
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {isAdmin && (
+          <Link
+            href="/dashboard/users"
+            className="group rounded-lg border border-border bg-card p-5 shadow-sm transition-colors hover:border-primary/40 hover:bg-muted/40"
+          >
+            <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-md bg-primary/10">
+              <Shield className="h-5 w-5 text-primary" />
+            </div>
+            <p className="text-sm font-medium text-muted-foreground">Admin</p>
+            <p className="mt-0.5 text-base font-semibold text-foreground">
+              User Management
+            </p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              View all accounts and manage roles.
+            </p>
+          </Link>
+        )}
+      </div>
     </main>
   );
 }
