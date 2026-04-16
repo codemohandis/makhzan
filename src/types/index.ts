@@ -17,6 +17,46 @@ export interface ProfileWithEmail extends Profile {
   email: string;
 }
 
+// ── Books ─────────────────────────────────────────────────────────────────────
+
+export interface Book {
+  id:            string;
+  title:         string;
+  pdf_url:       string;
+  thumbnail_url: string | null;
+  language:      Locale;
+  can_download:  boolean;
+  author_id:     string | null;
+  created_at:    string;
+}
+
+export interface BookInput {
+  title:         string;
+  pdf_url:       string;
+  thumbnail_url?: string;
+  language:      Locale;
+  can_download?:  boolean;
+}
+
+// ── Videos ────────────────────────────────────────────────────────────────────
+
+export interface Video {
+  id:          string;
+  title:       string;
+  youtube_id:  string;
+  language:    Locale;
+  description: string | null;
+  author_id:   string | null;
+  created_at:  string;
+}
+
+export interface VideoInput {
+  title:        string;
+  youtube_id:   string;
+  language:     Locale;
+  description?: string;
+}
+
 // ── Articles ──────────────────────────────────────────────────────────────────
 
 export type ArticleStatus   = 'draft' | 'published';
