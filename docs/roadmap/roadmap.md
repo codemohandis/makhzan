@@ -86,7 +86,7 @@
 |---|---|---|---|---|
 | [~] 24 | F-06-01 | Migrate Articles Table | P0 | `.claude/specs/feature-specs/24-migrate-articles-table.md` |
 | [~] 25 | F-06-02 | Migrate Books + Videos Tables | P0 | `.claude/specs/feature-specs/25-migrate-books-videos-tables.md` |
-| [ ] 26 | F-06-03 | Apply RLS Policies (Articles, Books, Videos) | P0 | — |
+| [~] 26 | F-06-03 | Apply RLS Policies (Articles, Books, Videos) | P0 | `.claude/specs/feature-specs/26-apply-rsl-policies.md` |
 | [ ] 27 | F-06-04 | Create Storage Bucket + Policies | P0 | — |
 | [ ] 28 | F-06-05 | Articles Updated-At Trigger | P1 | — `[NEW]` |
 
@@ -116,5 +116,5 @@ M-06 Database (runs in parallel with M-01 setup)
 | M-03 Articles | 5 | 0 | 0 | 5 |
 | M-04 Library | 5 | 0 | 0 | 5 |
 | M-05 Media | 4 | 0 | 0 | 4 |
-| M-06 Database | 5 | 0 | 2 | 3 |
-| **Total** | **28** | **2** | **9** | **17** |
+| M-06 Database | 5 | 0 | 3 | 2 |
+| **Total** | **28** | **2** | **10** | **16** |

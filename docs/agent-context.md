@@ -71,7 +71,7 @@
 | 23 | F-05-04 | Public Video Gallery Page | `[ ]` Not Started | — |
 | 24 | F-06-01 | Migrate Articles Table | `[~]` In Progress (profiles applied; articles pending) | `.claude/specs/feature-specs/24-migrate-articles-table.md` |
 | 25 | F-06-02 | Migrate Books + Videos Tables | `[~]` In Progress | `.claude/specs/feature-specs/25-migrate-books-videos-tables.md` |
-| 26 | F-06-03 | Apply RLS Policies (Articles, Books, Videos) | `[ ]` Not Started | — |
+| 26 | F-06-03 | Apply RLS Policies (Articles, Books, Videos) | `[~]` In Progress | `.claude/specs/feature-specs/26-apply-rsl-policies.md` |
 | 27 | F-06-04 | Create Storage Bucket + Policies | `[ ]` Not Started | — |
 | 28 | F-06-05 | Articles Updated-At Trigger | `[ ]` Not Started | — |
 
