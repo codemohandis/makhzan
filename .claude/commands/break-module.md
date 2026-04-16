@@ -42,6 +42,14 @@ For each feature, print a brief block:
 ## Step 5 — Update Roadmap
 Append any new features discovered (not already in `docs/roadmap/roadmap.md`) to the correct module table in that file. Mark newly added rows with `[NEW]`.
 
+## Step 5a — Save Break-Module File
+Write the full feature breakdown (Steps 3 + 4 output) to:
+`.claude/specs/break-modules/<module_id_lowercase>-<module_name_slug>.md`
+
+Example: `M-06 · Database` → `.claude/specs/break-modules/M-06-database.md`
+
+This file is the persistent record of the decomposition. Future `/break-module` runs on the same module should overwrite it.
+
 ## Step 5b — Regenerate Agent Context
 Update `docs/agent-context.md` to reflect the current state of the project:
 1. **Spec Registry** — sync all rows from `docs/roadmap/roadmap.md` (status + spec file path)
