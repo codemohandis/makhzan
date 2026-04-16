@@ -69,9 +69,8 @@
     border-color: hsl(var(--border));
   }
 
-  /* ── Root typography & direction ──────────────────────────────────── */
+  /* ── Root typography ─────────────────────────────────────────────── */
   html {
-    direction: rtl;
     font-family: var(--font-body), serif;
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));

@@ -8,7 +8,6 @@ interface GlobalContainerProps {
 export function GlobalContainer({ children, className }: GlobalContainerProps) {
   return (
     <div
-      dir="rtl"
       className={cn(
         "min-h-screen bg-paper text-ink",
         "mx-auto max-w-6xl",
