@@ -4,7 +4,8 @@
       "Bash(mkdir -p \"C:\\\\Users\\\\hijaz trd\\\\Documents\\\\Makhzan\\\\supabase\\\\rollbacks\")",
       "Bash(mv \"C:\\\\Users\\\\hijaz trd\\\\Documents\\\\Makhzan\\\\supabase\\\\migrations\\\\20260416000000_create_profiles.rollback.sql\" \"C:\\\\Users\\\\hijaz trd\\\\Documents\\\\Makhzan\\\\supabase\\\\rollbacks\\\\20260416000000_create_profiles.rollback.sql\")",
       "Bash(node -e ':*)",
-      "Bash(echo \"EXIT:$?\")"
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(npx supabase:*)"
     ]
   }
 }
