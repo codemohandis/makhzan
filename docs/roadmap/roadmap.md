@@ -55,7 +55,7 @@
 
 | Step | Feature ID | Feature Name | Priority | Spec |
 |---|---|---|---|---|
-| 10 | F-03-01 | TipTap RTL Editor Component | P0 | `.claude/specs/10-tiptap-rtl-editor.md` |
+| [~] 10 | F-03-01 | Build TipTap RTL Editor | P0 | `.claude/specs/feature-specs/10-build-tiptap-rtl-editor.md` |
 | 11 | F-03-02 | Article Server Actions (CRUD + RBAC) | P0 | `.claude/specs/11-article-server-actions.md` |
 | 12 | F-03-03 | Dashboard Article List & Edit Pages | P0 | `.claude/specs/12-dashboard-articles.md` |
 | 13 | F-03-04 | Public Article Listing Page | P1 | `.claude/specs/13-public-articles.md` |
@@ -113,7 +113,7 @@ M-06 Database (runs in parallel with M-01 setup)
 |---|---|---|---|---|
 | M-01 Foundation | 5 | 1 | 4 | 0 |
 | M-02 Auth | 4 | 1 | 3 | 0 |
-| M-03 Articles | 5 | 0 | 0 | 5 |
+| M-03 Articles | 5 | 0 | 1 | 4 |
 | M-04 Library | 5 | 0 | 0 | 5 |
 | M-05 Media | 4 | 0 | 0 | 4 |
 | M-06 Database | 5 | 1 | 4 | 0 |
