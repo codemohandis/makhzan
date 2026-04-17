@@ -55,7 +55,7 @@
 | 07 | F-02-02 | Profiles Table + Auto-Create Trigger | `[x]` Done | `.claude/specs/feature-specs/07-profile-table.md` |
 | 08 | F-02-03 | Login & Logout Pages | `[ ]` Not Started | — |
 | 09 | F-02-04 | Admin Role Elevation | `[~]` In Progress | `.claude/specs/feature-specs/09-role-elevation.md` |
-| 10 | F-03-01 | TipTap RTL Editor Component | `[ ]` Not Started | — |
+| 10 | F-03-01 | Build TipTap RTL Editor | `[~]` In Progress | `.claude/specs/feature-specs/10-build-tiptap-rtl-editor.md` |
 | 11 | F-03-02 | Article Server Actions (CRUD + RBAC) | `[ ]` Not Started | — |
 | 12 | F-03-03 | Dashboard Article List & Edit Pages | `[ ]` Not Started | — |
 | 13 | F-03-04 | Public Article Listing Page | `[ ]` Not Started | — |

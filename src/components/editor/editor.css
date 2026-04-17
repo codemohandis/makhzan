@@ -1,0 +1,87 @@
+/* ── TipTap Prose — RTL-first styles ─────────────────────────────────────── */
+/* Scoped to .tiptap-prose. All alignment uses logical properties (start/end). */
+
+.tiptap-prose {
+  font-family: var(--font-body), serif;
+  color: hsl(var(--foreground));
+  outline: none;
+}
+
+/* ── Paragraphs ─────────────────────────────────────────────────────────── */
+.tiptap-prose p {
+  text-align: start;
+  margin-block-end: 0.6em;
+}
+
+.tiptap-prose p:last-child {
+  margin-block-end: 0;
+}
+
+/* ── Headings ────────────────────────────────────────────────────────────── */
+.tiptap-prose h1,
+.tiptap-prose h2,
+.tiptap-prose h3 {
+  text-align: start;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-block-start: 1em;
+  margin-block-end: 0.4em;
+  color: hsl(var(--foreground));
+}
+
+.tiptap-prose h1 { font-size: 1.6rem; }
+.tiptap-prose h2 { font-size: 1.3rem; }
+.tiptap-prose h3 { font-size: 1.1rem; }
+
+/* ── Lists ───────────────────────────────────────────────────────────────── */
+.tiptap-prose ul,
+.tiptap-prose ol {
+  padding-inline-start: 1.4em;
+  margin-block-end: 0.6em;
+  text-align: start;
+}
+
+.tiptap-prose li {
+  margin-block-end: 0.2em;
+  text-align: start;
+}
+
+/* ── Inline ──────────────────────────────────────────────────────────────── */
+.tiptap-prose strong { font-weight: 700; }
+.tiptap-prose em     { font-style: italic; }
+
+.tiptap-prose code {
+  font-size: 0.875em;
+  background-color: hsl(var(--muted));
+  border-radius: 3px;
+  padding-block: 0.1em;
+  padding-inline: 0.3em;
+}
+
+.tiptap-prose blockquote {
+  border-inline-start: 3px solid hsl(var(--border));
+  padding-inline-start: 1em;
+  margin-inline-start: 0;
+  color: hsl(var(--muted-foreground));
+  font-style: italic;
+  text-align: start;
+}
+
+/* ── Placeholder (editor only) ───────────────────────────────────────────── */
+.tiptap-prose p.is-editor-empty:first-child::before {
+  color: hsl(var(--muted-foreground));
+  content: attr(data-placeholder);
+  float: inline-start;
+  height: 0;
+  pointer-events: none;
+}
+
+/* ── Urdu line-height override ───────────────────────────────────────────── */
+:is([lang="ur"]) .tiptap-prose {
+  line-height: 2;
+}
+
+/* ── Farsi line-height override ──────────────────────────────────────────── */
+:is([lang="fa"]) .tiptap-prose {
+  line-height: 1.8;
+}
