@@ -71,6 +71,27 @@ export async function getArticleById(
   return { data: data as Article };
 }
 
+/**
+ * Returns ALL articles (any status), ordered newest first.
+ * Requires authentication — for CMS dashboard use only.
+ */
+export async function getAdminArticles(): Promise<
+  { data: Article[] } | { error: string; status: number }
+> {
+  const supabase = await createSupabaseServerClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return { error: 'Forbidden', status: 403 };
+
+  const { data, error } = await supabase
+    .from('articles')
+    .select('id, title, content, language, status, author_id, created_at, updated_at')
+    .order('created_at', { ascending: false });
+
+  if (error) return { error: error.message, status: 500 };
+
+  return { data: (data ?? []) as Article[] };
+}
+
 // ── Mutating Actions ──────────────────────────────────────────────────────────
 
 /**
