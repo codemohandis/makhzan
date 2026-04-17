@@ -26,3 +26,6 @@ Thumbs.db
 .playwright/
 playwright-report/
 test-results/
+
+# Supabase CLI local link (auto-generated, not committed)
+.supabase/
